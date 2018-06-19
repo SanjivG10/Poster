@@ -191,6 +191,45 @@ a
 
 .followButton
 {
-	font-family: 'Spirax', cursive;
+	font-family: 'Tajawal', sans-serif;
+	background: #E8EAEE;
+}
 
+.peopleYouMayKnowBar
+{
+	width: 100%;
+	text-align: center;
+}
+
+
+.peopleYouMayKnowBar2
+{
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+.firstPeople
+{
+	width: 50%;
+}
+
+.peopleYouMayKnowPhoto
+{
+	height: 100px;
+}
+
+.peopleYouMayKnowUsername
+{
+	text-overflow: ellipsis;
+}
+
+.sponsored
+{
+	margin-top: 20px;
+}
+
+.sponsoredTitle
+{
+	margin-left: 10px;
+	margin-top: 10px;
 }
