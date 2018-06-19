@@ -1,0 +1,97 @@
+
+.contentHolder
+{
+	width: 100%;
+
+}
+.statusBar
+{
+	height: 150px;
+	width: 60%;
+	margin-top: 20px;
+}
+
+
+.photo
+{
+	text-align: center;
+}
+
+
+
+.card-footer, .card-header
+{
+	height: 40px;
+}
+
+.composeVideo
+{
+	margin-left: 1%;
+}
+
+.profilePicture
+{
+	width: 30px;
+	height: 30px;
+}
+
+.postingPlace
+{
+	height: 70px;
+	width: 100%;
+	position: relative;
+}
+
+.userImage
+{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.imageHolder
+{
+	width: 10%;
+	position: absolute;
+	top: 15px;
+}
+
+
+.postHelper
+{
+	width: 100%;
+	height: 70px;
+	position: absolute;
+	top: 0;
+
+}
+
+.status
+{
+	width: 90%;
+	position: absolute;
+	left: 50px;
+	overflow: hidden;
+	height: 100%;
+	border-style: none; 
+}
+.status:focus
+{
+	outline: none;
+	border: none;
+	border-style: none;
+}
+.postHolder
+{
+	position: relative;
+}
+
+.eachPost
+{
+	margin-top: 10px;
+
+}
+
+
+
+

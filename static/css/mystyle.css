@@ -1,0 +1,196 @@
+body
+{
+	background: #E8EAEE;
+	font-family: 'Encode Sans Condensed', sans-serif;
+
+}
+
+a
+{
+	text-decoration-line: none !important;
+}
+
+.profilePictureNavbar
+{
+	height: 30px;
+	border-radius: 50%;
+}
+
+.navbar
+{
+	width: 100%;
+}
+
+
+.profileName
+{
+	margin-left: 5px;
+	margin-top: 4px;
+}
+
+.postAfterNavbar
+{
+	margin-top: 5px;
+	width: 100%;
+	margin: 10px auto;
+}
+
+
+.Lsidebar
+{
+	height: 100vh;
+}
+
+
+.Rsidebar
+{
+
+}
+
+.postBar
+{
+	background: #FFF;
+	position: relative;
+	margin: 0px;
+	padding: 0;
+}
+
+
+.desciptionImage
+{
+	height: 40px;
+	border-radius: 50%;
+}
+
+.usernameDescription
+{
+	display: inline;
+	margin-left: 5px;
+}
+
+.postIcon
+{
+	height: 20px;
+	border-radius: 50%;
+	margin-top: 10px;
+}
+
+.textSideBar
+{
+	font-size: 14px;
+	color: red;
+	margin-top: 3px;
+}
+
+.eachPost
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	border-top: none;
+}
+
+.posteruserImage
+{
+	height: 60px;
+	border-radius: 50%;
+}
+
+.userName
+{
+	margin: -3px;
+}
+
+.timeofPost
+{	
+	text-decoration-color: #3e3e3e !important;
+	font-size: 15px;
+	color: #3e3e3e;
+}
+
+.eachPostBody
+{
+	position: relative;
+}
+
+
+.caption
+{
+	font-family: 'Encode Sans Condensed', sans-serif;
+
+}
+
+
+.everyPostPhotoByUser
+{
+	margin:0;
+	padding: 0;
+	width: 100%;
+}
+.photoGalleryPic
+{
+	width: 33.33%;
+}
+
+
+.likeCommentSection
+{
+	border: none;
+	margin-top: 10px;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	color: #3e3e3e;
+}
+
+
+
+.followUnfollowPostholderMain
+{
+	width: 100%;
+	text-align: center;
+}
+
+
+.followUnfollowPostholder
+{
+	width: 33.33%;
+}
+
+
+.galleryPhotos
+{
+	height: 100px;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.profilePhotos
+{
+	margin-top: 10px;
+	background: #E8EAEE;
+	border: 0.05px solid black;
+
+}
+.visitedLinks
+{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.recentlyVisitedLinkPhoto
+{
+	height: 40px;
+	border-radius: 50%;
+	margin-right: 10px;
+
+}
+
+.followButton
+{
+	font-family: 'Spirax', cursive;
+
+}
