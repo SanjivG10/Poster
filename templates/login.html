@@ -1,0 +1,152 @@
+{% extends "layout_login_register.html" %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block body %}
+
+
+
+<div class="row row1">	
+	<div class="col-sm-12 col-md-6 col-lg-4  Col1">
+		<div class="card" ">
+		  <div class="card-body">
+		    <h5 class="card-title homePageEachPostCardTitle" >
+		    	<img id="eachUserImageHomePage" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/14908277_1922206274673726_8359523254259296115_n.jpg?_nc_cat=0&oh=55ae171a1c54a1d145014b583dcececf&oe=5BBA5EB6">
+		    	<p id="pageTitleHomePage">
+		    		Mother of Sarcasm 
+		    		<span style="float: right;">  
+		    			<i class="fa fa-at" style="font-size:16px">3.6M</i>
+		    		</span> 
+		    	</p>
+		    </h5>
+		    <p class="card-text"> G(old) </p>
+			<img class="card-img-top" style="height: 500px;" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/36064014_2293513437543006_4898204433499815936_n.jpg?_nc_cat=0&oh=ae06c957670b27d5d2547a585a8cef22&oe=5BE5036D" alt="Card image cap">		    
+		    
+			<div class="row justify-content-center likeCommentSectionHomePage">
+				<i class="fa fa-heart-o likePostHomePage" style="font-size:24px"></i>
+
+				<i class="fa fa-bullhorn commentPostHomePage" style="font-size:24px"></i>
+
+				<i class="fa fa-share sharePostHomePage" style="font-size:24px"></i>
+
+
+			</div>
+		
+		  </div>
+		</div>
+	</div>	
+
+	<div class="col-sm-12 col-md-6 col-lg-4  Col2">
+		<div class="card" ">
+		  <div class="card-body">
+		    <h5 class="card-title homePageEachPostCardTitle" >
+		    	<img id="eachUserImageHomePage" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/33159143_10155761568572746_341872572058566656_n.jpg?_nc_cat=0&oh=30b0ca139c2b2e2de057f866ad181a8e&oe=5BB42D17">
+		    	<p id="pageTitleHomePage">
+		    		Manchester United
+		    		<span style="float: right;">  
+		    			<i class="fa fa-at" style="font-size:16px">100.6M</i>
+		    		</span> 
+		    	</p>
+		    </h5>
+		    <p class="card-text"> It's matchday for the Three Lions! </p>
+			<img class="card-img-top" style="height: 500px;" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/36137306_10155829290837746_996598468992565248_n.jpg?_nc_cat=0&oh=593f38d01ab1d81f465bf6a72a333ada&oe=5BB08978">		    
+		    
+			<div class="row justify-content-center likeCommentSectionHomePage">
+				<i class="fa fa-heart-o likePostHomePage" style="font-size:24px"></i>
+
+				<i class="fa fa-bullhorn commentPostHomePage" style="font-size:24px"></i>
+
+				<i class="fa fa-share sharePostHomePage" style="font-size:24px"></i>
+
+
+			</div>
+		
+		  </div>
+		</div>
+	</div>	
+
+	<div class="col-sm-12 col-md-6 col-lg-4  Col3">
+		<div class="card" ">
+		  <div class="card-body">
+		    <h5 class="card-title homePageEachPostCardTitle" >
+		    	<img id="eachUserImageHomePage" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/17903437_10155554645366840_7299462485287843175_n.png?_nc_cat=0&oh=19d4a64da8875414ed48bd957de63618&oe=5BABA39A">
+		    	<p id="pageTitleHomePage">
+		    		9GAG	
+		    		<span style="float: right;">  
+		    			<i class="fa fa-at" style="font-size:16px">13.6M</i>
+		    		</span> 
+		    	</p>
+		    </h5>
+		    <p class="card-text"> This has happened too many times to be funny. </p>
+			<img class="card-img-top" style="height: 500px;" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/34382444_10157734966036840_4486696272475979776_n.jpg?_nc_cat=0&oh=3d31fabdd6514b140ff7d90660b0c5a2&oe=5B9F0146" alt="Card image cap">		    
+		    
+			<div class="row justify-content-center likeCommentSectionHomePage">
+				<i class="fa fa-heart-o likePostHomePage" style="font-size:24px"></i>
+
+				<i class="fa fa-bullhorn commentPostHomePage" style="font-size:24px"></i>
+
+				<i class="fa fa-share sharePostHomePage" style="font-size:24px"></i>
+
+
+			</div>
+		
+		  </div>
+		</div>
+	</div>		
+
+
+</div>
+{% endblock %}
+
+
+
+
+<!-- Sign Up -->
+		<!-- <div class="card-body">
+	  	    <h5 class="card-title">Signup </h5>
+
+				{% from "_formhelpers.html" import render_field %}
+			<form method=post action="/login">
+
+			    <div class="form-group">
+					{{ render_field(form1.username, class="form-control") }}
+				</div>
+
+				<div class="form-group">
+					{{ render_field(form1.email, class="form-control") }}
+				</div>
+
+			    <div class="form-group">
+					{{ render_field(form1.password,class="form-control") }}
+				</div>
+
+				<button type="submit" class="btn btn-primary">Password</button>
+			</form>
+			<br/>
+	  	</div> -->
+
+
+<!-- Login 
+
+<div class="card-body">
+	  	    <h5 class="card-title">Login </h5>
+
+				{% from "_formhelpers.html" import render_field %}
+			<form method=post action="/login">
+
+			    <div class="form-group">
+					{{ render_field(form.username, class="form-control") }}
+				</div>
+
+			    <div class="form-group">
+					{{ render_field(form.password,class="form-control") }}
+				</div>
+
+				<button type="submit" class="btn btn-success">Login</button>
+			</form>
+			<a  href="{{url_for('resetPass')}}">Forgot Password</a>
+			<br/>
+
+
+-->

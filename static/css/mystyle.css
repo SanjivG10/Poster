@@ -207,6 +207,7 @@ a
 	width: 100%;
 	text-align: center;
 	margin-top: 10px;
+	padding: 0;
 }
 .firstPeople
 {
@@ -232,4 +233,21 @@ a
 {
 	margin-left: 10px;
 	margin-top: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+    .Lsidebar, .Rsidebar {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .Rsidebar {
+        display: block !important;
+    }
+    .Lsidebar
+    {
+    	display: none !important;
+    }
 }

@@ -163,7 +163,9 @@
 
 			</div>	
 
-			<div class="col-sm-6 postBar">
+			{% block oneContent %}
+
+			<div class="col-sm-12 col-md-6 col-lg-6 postBar">
 					<div class="card eachPost" >
 					  <div class="card-body eachPostBody">
 					    <h5 class="card-title">
@@ -199,8 +201,10 @@
 					</div>
 			</div>	
 
-			<div class="col-sm-3 Rsidebar">
-				<div class="card" style="width: 18rem;">
+			{% endblock %}
+
+			<div class="col-sm-3 col-md-6 col-lg-3 Rsidebar">
+				<div class="card" ">
 				  <div class="card-body">
 				    <h5 class="card-title peopleYouMayKnow">People you may know</h5>
 				    

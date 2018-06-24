@@ -1,0 +1,28 @@
+.loginCardHolder
+{
+	width: 100%;
+	padding: 0;
+	margin:0;
+}
+
+.loginCard
+{
+	width: 50%;
+	padding: 0;
+	margin:0;
+}
+
+.signUpCard
+{
+	width: 50%;
+}
+
+#inputEmail
+{
+	margin-bottom: 10px; 
+}
+
+.loginButton
+{
+	margin-top: 10px;
+}

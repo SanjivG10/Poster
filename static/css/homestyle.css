@@ -1,0 +1,49 @@
+.row1
+{
+	margin: 0;
+	padding: 10px;
+
+}
+
+.row2
+{
+	margin: 0;
+	padding: 10px;
+}
+
+
+
+
+#eachUserImageHomePage
+{
+	border-radius: 50%;
+	height: 40px;
+}
+
+#pageTitleHomePage
+{
+	margin-left: 5px;
+	display: inline;
+
+}
+
+.likeCommentSectionHomePage
+{
+	margin-top: 10px;
+
+}
+
+.likePostHomePage
+{	
+
+}
+
+.commentPostHomePage
+{
+	margin-left: 20px;
+}
+
+.sharePostHomePage
+{
+	margin-left: 20px;	
+}
