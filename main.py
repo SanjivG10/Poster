@@ -69,19 +69,32 @@ def loginSignUp():
 @app.route("/SignUpCheck",methods=['POST'])
 def signupCheck():
 	usernameSignUp= request.form.get('username')
-	user = User.query.filter_by(username=usernameSignUp).first() 
-	if user:
-		print user.username
-		return json.dumps({
-			'status':'UsernameExists'
-			})
-	else:
-		return json.dumps({
-			'status':'UsernameAvailable'
-			})	
+	emailSignUp = request.form.get('email')
+	if usernameSignUp:
+		user = User.query.filter_by(username=usernameSignUp).first() 
+		if user:
+			print user.username
+			return json.dumps({
+				'status':'UsernameExists'
+				})
+		else:
+			return json.dumps({
+				'status':'UsernameAvailable'
+				})	
+	elif emailSignUp:
+		user = User.query.filter_by(email=emailSignUp).first() 
+		if user:
+			return json.dumps({
+				'status':'EmailExists'
+				})
+		else:
+			return json.dumps({
+				'status':'EmailAvailable'
+				})	
 
 #association tables
-
+	else:
+		pass
 
 class User(db.Model,UserMixin):
 	id = db.Column(db.Integer,unique=True,primary_key=True)
