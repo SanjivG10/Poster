@@ -94,18 +94,18 @@
       <div class="modal-body">
         <form action="/SignUpCheck" method="post">
           <div class="form-group">
-            <input type="text" name="UsernameSignUpHomePage" class="form-control" id="SignUpUsername" aria-describedby="emailHelp" placeholder="Username">
+            <input type="text" name="UsernameSignUpHomePage" required="true" class="form-control" id="SignUpUsername" aria-describedby="emailHelp" placeholder="Username">
             <p id="errorUsername" style="color: red;"></p>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" name="EmailSignUpHomePage" id="SignUpEmail" aria-describedby="emailHelp" placeholder="Email">
+            <input type="email" class="form-control" required="true" name="EmailSignUpHomePage" id="SignUpEmail" aria-describedby="emailHelp" placeholder="Email">
             <p id="errorEmail" style="color: red;"></p>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="PasswordSignUpHomePage" id="SignUpPassword" placeholder="Password">
+            <input type="password" class="form-control" required="true"  name="PasswordSignUpHomePage" id="SignUpPassword" placeholder="Password">
             <p id="errorPassword" style="color: red;"></p>
           </div>
-          <button type="submit" id="SignUpButton" disabled="true" class="btn btn-primary">SignUp</button>
+          <button type="submit" id="SignUpButton"  disabled="false" class="btn btn-primary">SignUp</button>
         </form>
       </div>
       <div class="modal-footer">
