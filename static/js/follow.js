@@ -11,7 +11,8 @@ $(document).ready( () =>{
 			url:"/follow",
 			type:"post",
 			data:{
-				"userToFollow": userToFollow
+				"userToFollow": userToFollow,
+				"followOrUnFollow" : current_button.text()
 			},
             success: function(response) {
                 server_response =  $.parseJSON(response);
@@ -19,7 +20,11 @@ $(document).ready( () =>{
                 reponse = server_response["status"];
                 if (reponse==="followed")
                 {
-                	current_button.text("UnFollow");
+                	current_button.text("Unfollow");
+                }
+                else if (reponse=="Unfollowed")
+                {
+                	current_button.html(` Follow <i class="fa fa-heart" style="font-size:14px" style="color: white;"></i> `);
                 }
             },
             error: function(error) {

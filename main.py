@@ -33,7 +33,6 @@ def home():
 		passwordLogin =  request.form.get("PasswordLoginHomePage")
 
 		if "logMeIn" in request.form:
-			print usernameLogin, passwordLogin
 			if signIn(usernameLogin,passwordLogin):
 				return redirect(url_for('home'))
 			else:
@@ -63,20 +62,35 @@ def loginSignUp():
 @app.route("/follow",methods=['POST'])
 def follow():
 	following_user = request.form.get('userToFollow');
+	followOrUnfollow = request.form.get('followOrUnFollow')
+	followOrUnfollow= followOrUnfollow.replace(" ", "")
 	following_user = User.query.filter_by(username=following_user).first()
 	if following_user:
 		print ("User Exists", following_user.username)
 		current_logged_user = User.query.filter_by(id=current_user.get_id()).first()
 		print current_logged_user
-		try:
-			current_logged_user.follow(following_user)
-			return json.dumps({
-			"status":"followed"
-			})
-		except:
-			return json.dumps({
-				"status":"not_followed"
-				})
+		print followOrUnfollow
+		if current_logged_user:
+			if "Follow" in followOrUnfollow:
+				try:
+					current_logged_user.follow(following_user)
+					return json.dumps({
+					"status":"followed"
+					})
+				except:
+					return json.dumps({
+						"status":"not_followed"
+						})
+			else:
+				try:
+					current_logged_user.unfollow(following_user)
+					return json.dumps({
+					"status":"Unfollowed"
+					})
+				except:
+					return json.dumps({
+						"status":"followed"
+						})		
 	return url_for("users")		
 
 		
@@ -118,10 +132,16 @@ def signupCheck():
 		return redirect(url_for('home'))
 
 @app.route("/users")
+@login_required
 def users():
+	current_user_id = current_user.get_id()
 	users = User.query.all()
-	print users
-	return render_template("users.html",users=users)
+	current_loggedUser = User.query.filter_by(id=current_user_id).first()
+	if current_loggedUser:
+		this_user_follows_them= current_loggedUser.current_user_following()
+		current_user_username = User.query.filter_by(id=current_user_id).first().username
+		print this_user_follows_them
+	return render_template("users.html",users=users,current_user_username=current_user_username,ifollowthem=this_user_follows_them)
 
 
 association = db.Table('FollowNode',
@@ -153,6 +173,10 @@ class User(db.Model,UserMixin):
 	def is_following(self,user):
 		print self.follows.filter(association.c.following==user.id).count()> 0
 		return self.follows.filter(association.c.following==user.id).count()> 0
+
+	def current_user_following(self):
+		following_users = self.follows.filter().all()
+		return following_users
 
 	# following = db.relationship(
 	# 		'User', 
