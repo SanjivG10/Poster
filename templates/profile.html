@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> {{username}}</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/profile.css')}}">
+	<link rel="icon"  href="https://cdn2.iconfinder.com/data/icons/outline-basic-ui-set/139/Profile-Outline-512.png">
+</head>
+<body>
+
+	<div class="card">
+		<div class="image">
+			<img src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/27540886_2018752978403801_5231048398945606102_n.jpg?_nc_cat=0&oh=3a475fdbaa926514fdd6ad7a1ea490e7&oe=5BE9227F" class="user">
+		</div>
+
+		<div id="username">{{username}}</div>
+
+		<div class="LikeSectionRow">
+			<button id="followButton">Follow</button>
+		</div>
+
+	</div>
+
+</body>
+</html>

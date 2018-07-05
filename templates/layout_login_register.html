@@ -65,18 +65,22 @@
   <div class="collapse navbar-collapse row justify-content-center" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link" href="#">
-        <img style="height: 40px; border-radius: 50%;" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/19399189_1910375805908186_2288361146269777196_n.jpg?_nc_cat=0&oh=c8fc8d3f5e623db0df06db82f67bbea1&oe=5BB599C5">
-        <p style="display: inline; color: #FFF; margin-left: 5px; font-family: monospace;">SanjivG10</p>
+        <img style="height: 40px; border-radius: 50%;" src="{{userImage}}">
+        <p style="display: inline; color: #FFF; margin-left: 5px; font-family: monospace;">{{username}}</p>
       </a>
       <a class="nav-item nav-link" href="#">
         <i class="fa fa-flag-o" style="font-size:40px"></i>
       </a>
+   
     </div>
   </div>
    <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
    </form>
+    <a class="nav-item nav-link" href="/logout"  >
+      <i class="fa fa-sign-out" style="font-size:40px"></i>
+    </a>   
 </nav>
 
   {% endif %}
@@ -105,7 +109,12 @@
             <input type="password" class="form-control" required="true"  name="PasswordSignUpHomePage" id="SignUpPassword" placeholder="Password">
             <p id="errorPassword" style="color: red;"></p>
           </div>
-          <button type="submit" id="SignUpButton"  disabled="false" class="btn btn-primary">SignUp</button>
+
+          <div class="form-group">
+            <input type="text" class="form-control"  name="imageUrl" id="imageUrl" placeholder="Enter your facebook image url">
+          </div>
+
+          <button type="submit" id="SignUpButton"  disabled="false" class="btn btn-primary">Register</button>
         </form>
       </div>
       <div class="modal-footer">

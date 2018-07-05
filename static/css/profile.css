@@ -1,0 +1,55 @@
+*
+{
+	padding: 0;
+	margin: 0; 
+}
+
+body
+{
+	background: #3e3e3e;
+}
+
+
+.card
+{
+	height: 400px;
+	width: 400px;
+	background: #FFF;
+	position: relative;
+}
+
+.user
+{
+	height: 100px;
+	width: 100px;
+	border-radius: 40%;
+	position: absolute;
+	left:150px;
+	top: 10px;
+}
+
+#username
+{
+	position: absolute;
+	top: 120px;
+	font-family: monospace;
+	font-size: 20px;
+	left: 160px;
+	line-height: 0.9em;
+}
+
+.LikeSectionRow
+{
+	display: inline;
+	position: absolute;
+	top: 150px;
+}
+
+#followButton
+{
+ 	text-align: center;
+ 	padding: 5px 5px;
+ 	border-radius: 10%;
+ 	background: #008CBA;
+ 	
+}

@@ -17,12 +17,12 @@
 		{% if  current_user_username != user.username %}
 		<div class="col-sm-3 eachUser" ">
 			<div class="card" style="width: 18rem;" >
-			  <img class="card-img-top" src="https://scontent.fktm3-1.fna.fbcdn.net/v/t1.0-9/31944670_1913097285409907_297925302749757440_n.jpg?_nc_cat=0&_nc_eui2=AeHWD94mNSw_Lqe5M-ojN75IIykSlSpn9w30Nag0kUORWPz0mzzuFTIiuoNjmLA1kG-qDJN79E9DFBYZW5sudLhsHhDWaZDY_Fwac_61Wjkcig&oh=a9f551a970a98434b2e820f85e9431f2&oe=5BA6DEA3" height="200px;" alt="User">
+			  <img class="card-img-top" src="{{user.image_url}}" height="200px;" alt="User">
 			  <div class="card-body">
 			    <h5 class="card-title">{{user.username}}</h5>
 			    <div class="row">
 			    	<div class="col-sm-4">
-			    		<label  style="font-size: 14px; font-family: monospace;"> 4.8M </label>
+			    		<label  style="font-size: 14px; font-family: monospace;"> {{user.get_followers()}} </label>
 			    		<i class="fa fa-thumbs-o-up" style="font-size:24px"></i>
 			    	</div>
 
@@ -32,7 +32,7 @@
 			    	</div>	
 
 			    	<div class="col-sm-4">
-			    		<label  style="font-size: 14px; font-family: monospace;"> 32k </label>
+			    		<label  style="font-size: 14px; font-family: monospace;"> {{user.get_following()}} </label>
 						<i class="fa fa-hand-o-up" style="font-size:24px"></i>
 			    	</div>			    	
 			    </div>
@@ -42,7 +42,7 @@
 						<i class="fa fa-heart" style="font-size:14px" style="color: white;"></i>
 				    </a>
 				    {% else%}
-  					<a href="#" style="margin-top: 5px;"  class="btn btn-primary">
+  					<a href="#" style="margin-top: 5px;"  class="btn btn-dark">
 				    	Unfollow
 				    </a>
 

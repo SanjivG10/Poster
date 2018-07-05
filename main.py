@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os 
 from hash_password import generateHashPassword,matchHashPassword
 import json
+import datetime
 
 #initializing the app 
 app = Flask (__name__)
@@ -43,7 +44,9 @@ def home():
 		if current_user.is_authenticated:
 			#dosomething
 			print ("User is_authenticated")
-			return render_template('home.html',current_user=current_user)
+			user = User.query.filter_by(id=current_user.get_id()).first()
+			print user.image_url			
+			return render_template('home.html',current_user=current_user,username=user.username,userImage = user.image_url)
 		else:
 			print ("User Not authenticated")			
 			return render_template('home.html',current_user=None)
@@ -93,6 +96,12 @@ def follow():
 						})		
 	return url_for("users")		
 
+
+@app.route("/user/<string:username>")
+@login_required
+def profile(username):
+	return "Hello" + username
+
 		
 
 
@@ -128,7 +137,9 @@ def signupCheck():
 		usernameSignUp = request.form.get("UsernameSignUpHomePage")
 		emailSignUp = request.form.get("EmailSignUpHomePage")
 		passwordSignUp = request.form.get("PasswordSignUpHomePage")
-		signUp(usernameSignUp,emailSignUp,passwordSignUp)
+		imageUrl = request.form.get('imageUrl')
+		print imageUrl + "THIS IS IMAGE URL"
+		signUp(usernameSignUp,emailSignUp,passwordSignUp,imageUrl)
 		return redirect(url_for('home'))
 
 @app.route("/users")
@@ -154,11 +165,18 @@ class User(db.Model,UserMixin):
 	username = db.Column(db.String(20),unique=True)
 	email = db.Column(db.String(50),unique=True)
 	password_hash = db.Column(db.String)
+	no_followers= db.Column(db.Integer)
+	no_following=db.Column(db.Integer)
+	total_posts= db.Column(db.Integer)
+	image_url = db.Column(db.String);
+	#image = db.Column(db.String)
+	#followers = db.Column(db.String)
 	follows = db.relationship('User',secondary=association,
 	    primaryjoin=(association.c.followers == id),
         secondaryjoin=(association.c.following == id), 
         backref=db.backref('following',lazy='dynamic'),lazy='dynamic')
 
+	#posts = db.relationship('Post',backref='author',lazy='dynamic')
 
 	def follow(self,this_user):
 		if not self.is_following(this_user):
@@ -178,33 +196,27 @@ class User(db.Model,UserMixin):
 		following_users = self.follows.filter().all()
 		return following_users
 
-	# following = db.relationship(
-	# 		'User', 
-	# 		#association table is specified as secondary
-	# 		secondary='followers_table',
-	# 		primaryjoin=lambda: User.id == followers_table.c.followers_id, #followers_following+table column name cursor named with id 
-	# 		secondaryjoin=lambda: User.id == followers_table.c.following_id,
-	# 		#field that is geenratd in other Model, automatically, here  followers is generated automatically in User beneath this code
-	# 		backref=db.backref('followers', lazy='dynamic'), 
-	# 		lazy = 'dynamic'
-	# 		)
-	# def follow(self,user):
-	# 	if not self.is_following(user):
-	# 		self.following.append(user)
+	def current_user_followers(self):
+		followers_user = self.following.filter().all()	
+		return followers_user
 
-	# def unfollow(self,user):
-	# 	if self.is_following(user):
-	# 		self.remote(user)
+	def get_following(self):
+		return len(self.current_user_following())
+	
+	def get_followers(self):
+		return len(self.current_user_followers())
 
-	# def is_following(self,user):
-	# 	return self.following_filter(
-	# 	followers_tale.c.following_id ==user.id).count >0
-
-# followers_table = db.Table("followers_following_node",
-# 		db.Column('followers_id',db.Integer,db.ForeignKey(User.id)),		
-# 		db.Column('following_id',db.Integer,db.ForeignKey(User.id))
-# 	)
-
+####################################################### DON"T DELETE THIS ################################################################
+# class Post(db.Model):                                                                                                  				#
+# 	id = db.Column(db.Integer,unique=True,primary_key=True)																				#
+# 	date = db.Column(db.datetime,default=datetime.datetime.now())																		#
+# 	caption = db.Column(db.String)																										#
+# 	post_image = db.Column(db.String)																									#
+# 	likes = db.Column(db.String)																										#
+# 	comments = db.Column(db.String)																										#
+# 	shares = db.Column(db.String)																										#
+# 	posted_by = db.Column(db.Integer,db.ForeignKey('user.id'))															 				#
+#########################################################################################################################################
 
 def signIn(username,password):
 	user = User.query.filter_by(username=username).first()
@@ -219,23 +231,23 @@ def signIn(username,password):
 	return False 
 			
 
-def signUp(username,email,password):
+def signUp(username,email,password,imageUrl="None"):
 	password = generateHashPassword(password)
 	try:
-		new_user = User(username=username,email=email,password_hash=password)
+		new_user = User(username=username,email=email,password_hash=password,image_url = imageUrl)
 		db.session.add(new_user)
 		db.session.commit()
 		login_user(new_user)
 		print "New User Added Successfully!"
 	except:
-		return redirect(url_for('error404'))
+		return redirect(url_for('home'))
 	finally:
 		db.session.close()	
 
 
 #handling 404 error 
 @app.errorhandler(404)
-def error404(e):
+def error404(error):
 	return render_template("404.html",error=e)
 
 

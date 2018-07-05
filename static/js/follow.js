@@ -21,10 +21,12 @@ $(document).ready( () =>{
                 if (reponse==="followed")
                 {
                 	current_button.text("Unfollow");
+                    current_button.addClass("btn-warning").removeClass("btn-primary");
                 }
                 else if (reponse=="Unfollowed")
                 {
                 	current_button.html(` Follow <i class="fa fa-heart" style="font-size:14px" style="color: white;"></i> `);
+                      current_button.addClass("btn-primary").removeClass("btn-warning");                  
                 }
             },
             error: function(error) {
