@@ -11,9 +11,6 @@
 	padding: 10px;
 }
 
-
-
-
 #eachUserImageHomePage
 {
 	border-radius: 50%;
@@ -33,9 +30,24 @@
 
 }
 
-.likePostHomePage
-{	
+.notificationBar
+{
+	position: relative;
+}
 
+.no_notification
+{
+	position: absolute;
+	left: 35px;
+	top: 1px;
+	font-family: monospace;
+	color: #FFF;
+	font-size: 20px; 
+	line-height: 1em;
+	width: 20px;
+	height: 20px;
+	background: red;
+	text-align: center;
 }
 
 .commentPostHomePage

@@ -68,9 +68,36 @@
         <img style="height: 40px; border-radius: 50%;" src="{{userImage}}">
         <p style="display: inline; color: #FFF; margin-left: 5px; font-family: monospace;">{{username}}</p>
       </a>
-      <a class="nav-item nav-link" href="#">
-        <i class="fa fa-flag-o" style="font-size:40px"></i>
+      <a class="nav-item nav-link notificationLink dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" href="#">
+        <div class="notificationBar">
+          <i class="fa fa-flag-o notificationImage" style="font-size:40px"></i>
+          <p class="no_notification">{{notification|length}}</p>          
+        </div>
       </a>
+
+
+<div class="dropdown">
+  <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+    <ul class="list-group dropdown-item" style="border:none;">
+      {% for notify in notification %}
+        <li class="list-group-item"  style="border:none;" >
+          <img src="{{notify.image_url}}"
+          height="40" style="border-radius: 40%;">
+          <span style="color: black;">{{notify.username}}</span> started following you 
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
    
     </div>
   </div>
@@ -135,6 +162,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{url_for('static',filename='js/login.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/home.js')}}"></script>
 
 
 

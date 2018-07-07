@@ -42,11 +42,15 @@ def home():
 			
 	else :
 		if current_user.is_authenticated:
-			#dosomething
 			print ("User is_authenticated")
 			user = User.query.filter_by(id=current_user.get_id()).first()
-			print user.image_url			
-			return render_template('home.html',current_user=current_user,username=user.username,userImage = user.image_url)
+			print user.image_url
+			notification_current_user = current_user.notifications.filter(Notification.to_user_id==user.id).all()
+			print notification_current_user
+			notification_sender_users = []
+			for notification in notification_current_user:
+				notification_sender_users.append(User.query.filter_by(id=notification.sender_user_id).first())
+			return render_template('home.html',current_user=current_user,username=user.username,userImage = user.image_url, notification=notification_sender_users)
 		else:
 			print ("User Not authenticated")			
 			return render_template('home.html',current_user=None)
@@ -75,14 +79,16 @@ def follow():
 		print followOrUnfollow
 		if current_logged_user:
 			if "Follow" in followOrUnfollow:
+				print "I am in follow region"
 				try:
 					current_logged_user.follow(following_user)
 					return json.dumps({
 					"status":"followed"
 					})
-				except:
+				except Exception as e :
+					print str(e)  + "This is the error"
 					return json.dumps({
-						"status":"not_followed"
+						"status":"not_followed" 
 						})
 			else:
 				try:
@@ -157,30 +163,44 @@ def users():
 
 association = db.Table('FollowNode',
 	db.Column('followers',db.Integer,db.ForeignKey('user.id')),
-	db.Column('following',db.Integer,db.ForeignKey('user.id'))
+	db.Column('following',db.Integer,db.ForeignKey('user.id')),
+	db.Column('date',db.DateTime,default=datetime.datetime.utcnow())
 	)
+
+
+class Notification(db.Model):
+	id = db.Column(db.Integer,primary_key=True)
+	sender_user_id= db.Column(db.Integer,db.ForeignKey('user.id'))
+	type_notification = db.Column(db.String)
+	time = db.Column(db.DateTime,default=datetime.datetime.utcnow())
+	to_user_id= db.Column(db.Integer,db.ForeignKey('user.id'))
+
+
+
 
 class User(db.Model,UserMixin):
 	id = db.Column(db.Integer,unique=True,primary_key=True)
 	username = db.Column(db.String(20),unique=True)
 	email = db.Column(db.String(50),unique=True)
 	password_hash = db.Column(db.String)
-	no_followers= db.Column(db.Integer)
-	no_following=db.Column(db.Integer)
 	total_posts= db.Column(db.Integer)
-	image_url = db.Column(db.String);
-	#image = db.Column(db.String)
-	#followers = db.Column(db.String)
+	image_url = db.Column(db.String)
+	last_message_read_time = db.Column(db.DateTime)
 	follows = db.relationship('User',secondary=association,
 	    primaryjoin=(association.c.followers == id),
         secondaryjoin=(association.c.following == id), 
         backref=db.backref('following',lazy='dynamic'),lazy='dynamic')
+
+	notifications = db.relationship('Notification', backref='user',
+		primaryjoin = (Notification.to_user_id==id), lazy='dynamic')
 
 	#posts = db.relationship('Post',backref='author',lazy='dynamic')
 
 	def follow(self,this_user):
 		if not self.is_following(this_user):
 			self.follows.append(this_user)
+			new_notification= Notification(sender_user_id= self.id,to_user_id=this_user.id,type_notification="follows")	
+			db.session.add(new_notification)		
 			db.session.commit()
 
 	def unfollow(self,this_user):
