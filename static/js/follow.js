@@ -4,7 +4,7 @@ $(document).ready( () =>{
 	let followUser = $('a');
 	console.log(followUser.parent().parent().find(".card-title").text()); 
 	followUser.on('click',function (event){
-		console.log("Button Clicked");
+
 		let userToFollow=$(this).parent().parent().find(".card-title").text();
 		let current_button = $(this);
 		$.ajax({
@@ -34,6 +34,26 @@ $(document).ready( () =>{
             }
 
 		});
-	})
+	});
+
+
+    $('#dropdownMenuButton',on('click',function(){
+        console.log("You clicked me");
+        $.ajax({
+            url:"/update",
+            type:"post",
+            data:{
+                "time": "update"  
+            },
+            success: function(reponse)
+            {
+                console.log("I am ok");
+            }
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+    )
 
 });

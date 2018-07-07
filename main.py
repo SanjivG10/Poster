@@ -45,7 +45,7 @@ def home():
 			print ("User is_authenticated")
 			user = User.query.filter_by(id=current_user.get_id()).first()
 			print user.image_url
-			notification_current_user = current_user.notifications.filter(Notification.to_user_id==user.id).all()
+			notification_current_user = current_user.notifications.filter(Notification.to_user_id==user.id, Notification.time > user.last_message_read_time).all()
 			print notification_current_user
 			notification_sender_users = []
 			for notification in notification_current_user:
@@ -108,6 +108,20 @@ def follow():
 def profile(username):
 	return "Hello" + username
 
+
+
+@app.route("/updateLastSeen", methods=['POST'])
+@login_required
+def update():
+	time = request.form.get("time")
+	if time=="update":
+		print time 
+		current_time = datetime.datetime.utcnow()
+		me = User.query.filter_by(id=current_user.get_id()).first()
+		me.last_message_read_time = current_time
+		print me.last_message_read_time
+		db.session.commit()
+	return redirect(url_for('home'))
 		
 
 
@@ -174,7 +188,6 @@ class Notification(db.Model):
 	type_notification = db.Column(db.String)
 	time = db.Column(db.DateTime,default=datetime.datetime.utcnow())
 	to_user_id= db.Column(db.Integer,db.ForeignKey('user.id'))
-
 
 
 
