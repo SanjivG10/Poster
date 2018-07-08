@@ -198,7 +198,7 @@ class User(db.Model,UserMixin):
 	password_hash = db.Column(db.String)
 	total_posts= db.Column(db.Integer)
 	image_url = db.Column(db.String)
-	last_message_read_time = db.Column(db.DateTime)
+	last_message_read_time = db.Column(db.DateTime,default=datetime.datetime.utcnow())
 	follows = db.relationship('User',secondary=association,
 	    primaryjoin=(association.c.followers == id),
         secondaryjoin=(association.c.following == id), 
@@ -281,7 +281,7 @@ def signUp(username,email,password,imageUrl="None"):
 #handling 404 error 
 @app.errorhandler(404)
 def error404(error):
-	return render_template("404.html",error=e)
+	return render_template("404.html",error=error)
 
 
 @app.route("/logout")

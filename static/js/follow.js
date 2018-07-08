@@ -37,23 +37,6 @@ $(document).ready( () =>{
 	});
 
 
-    $('#dropdownMenuButton',on('click',function(){
-        console.log("You clicked me");
-        $.ajax({
-            url:"/update",
-            type:"post",
-            data:{
-                "time": "update"  
-            },
-            success: function(reponse)
-            {
-                console.log("I am ok");
-            }
-            error: function(error) {
-                console.log(error);
-            }
-        });
-    });
-    )
+ 
 
 });
